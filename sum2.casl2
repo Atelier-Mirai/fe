@@ -1,0 +1,23 @@
+; https://www.chiba-fjb.ac.jp/fjb_labo/casl/casl2.cgi
+; に貼り付けて、「アセンブル＆実行」ボタンで確認できます
+;
+; http://maicommon.ciao.jp/ss/architect/lang/index.htm より引用
+
+TOTAL10 START
+        XOR     GR1,GR1 ;GR1=0 カウンタ
+        LD      GR4,N   ;GR4は繰り返しの数 N を記憶
+        LAD     GR2,1   ;GR2は定数１
+        XOR     GR3,GR3 ;GR3=0 累計が入る
+;
+LOOP    ADDA    GR1,GR2 ;回数を増す
+        ADDA    GR3,GR1 ;和を求める
+        CPA     GR1,GR4 ;比較をして終了判断
+        JMI     LOOP    ;負なら繰り返す
+;
+        ST      GR3,SUM ;結果をSUMに保存
+        RET
+;
+SUM     DS      1       ;結果を保存する
+N       DC      10      ;回数を保存する
+;
+        END
