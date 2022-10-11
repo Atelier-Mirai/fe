@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-// p407
-// 基本交換法（バブルソート）
+// p408
+// 基本選択法（選択ソート）
 
 // 交換用関数
 void swap(int *x, int *y);
@@ -14,18 +14,28 @@ int main() {
   int i, j;                                 // 整数型の変数 i, j を宣言
   int n = 7;                                // n の宣言と初期化
   int a[] = { 10, 99, 51, 16, 27, 77, 6 };  // 並び替え対象の配列
+  int min, idx, min_idx;
 
-  for (i = 0; i < n; i++) {
-    for (j = 0; j < n-i-1; j++) {
-      print_array(a, n, i, j);
-
-      if (a[j] > a[j+1]) {
-        // a[j]とa[j+1]の値を入れ替える
-        printf("  a[%d]=%2d と a[%d]=%2d を入れ替えます\n", j, a[j], j+1, a[j+1]);
-        swap(&a[j], &a[j+1]);
-      } else {
-        printf("\n");
+  for (i = 0; i < n; i++) { // 先頭から何番目まで確定しているか
+    min     = a[i];
+    min_idx = i;
+    for (j = i; j < n; j++) { // 確定した処から最後の要素までの間で
+                              // 最大値を探し、入れ替える
+      // 最小値を探す
+      if (a[j] < min) {
+        min = a[j];
+        min_idx = j;
       }
+    }
+
+    print_array(a, n, i, j);
+
+    // 最小値の要素を示す添字が、確定位置の袖時でなければ入れ替える
+    if (min_idx != i) {
+      printf("  a[%d]=%2d と a[%d]=%2d を入れ替えます\n", min_idx, a[min_idx], i, a[i]);
+      swap(&a[min_idx], &a[i]);
+    } else {
+      printf("\n");
     }
   }
 
