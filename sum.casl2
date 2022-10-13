@@ -2,12 +2,12 @@
 ; に貼り付けて、「アセンブル＆実行」ボタンで確認できます
 ;
 SUM  START
-        LAD     GR0,0           ;合計用のレジスタを0に初期化
-        LAD     GR1,1           ;足し込んでいく数用GR1を1に初期化
-        LAD     GR2,1           ;増分用のレジスタGR2を1に初期化
-        LAD     GR3,10          ;終了数用のレジスタGR3を10に初期化
+        LAD     GR0, 0          ;合計用のレジスタを0に初期化
+        LAD     GR1, 1          ;足し込んでいく数用GR1を1に初期化
+        LAD     GR2, 1          ;増分用のレジスタGR2を1に初期化
+        LAD     GR3, 10         ;終了数用のレジスタGR3を10に初期化
 LOOPTOP
-        ADDA    GR0,GR1         ;GR0にGR1の値を加算
+        ADDA    GR0, GR1        ;GR0にGR1の値を加算
         ADDA    GR1, GR2        ;GR1を1増やす
         CPA     GR1, GR3        ;GR1を10と比較
         JPL     LOOPEND         ;(GR1-GR3)が正なら つまり GR1 > 10なら LOOPENDに飛ぶ

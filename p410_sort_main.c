@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <limits.h>
 
-#include "shellsort.c" // 他のファイルに書かれたコードを呼び出す
-#include "quicksort.c"
-#include "heapsort.c"
+#include "p410_shellsort.c" // 他のファイルに書かれたコードを呼び出す
+#include "p410_quicksort.c"
+#include "p411_heapsort.c"
 
 // p410-411
 // シェルソート / クイックソート / ヒープソート
